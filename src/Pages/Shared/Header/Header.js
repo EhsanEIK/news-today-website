@@ -15,6 +15,9 @@ const Header = () => {
                         <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="#link">News</Nav.Link>
                     </Nav>
+                    <div className='d-lg-none'>
+                        <LeftSideNav></LeftSideNav>
+                    </div>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
