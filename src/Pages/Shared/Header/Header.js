@@ -6,7 +6,7 @@ import LeftSideNav from '../LeftSideNav/LeftSideNav';
 
 const Header = () => {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" className='mb-3'>
             <Container>
                 <Navbar.Brand href="#home">NEWS TODAY</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
