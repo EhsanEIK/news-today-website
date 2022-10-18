@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { FaGoogle, FaGithub, FaFacebook, FaYoutube, FaTwitter, FaWhatsapp, FaInstagram } from "react-icons/fa";
 import ListGroup from 'react-bootstrap/ListGroup';
-import { Link } from 'react-router-dom';
+import BrandCarousel from '../BrandCarousel/BrandCarousel';
 
 const RightSideNav = () => {
     return (
@@ -19,6 +19,8 @@ const RightSideNav = () => {
                 <ListGroup.Item className='mb-3'><FaWhatsapp /> Whatsapp</ListGroup.Item>
                 <ListGroup.Item className='mb-3'><FaInstagram /> Instagram</ListGroup.Item>
             </ListGroup>
+            <p className='h4 fw-bold mt-4 mb-2'>Brand Partners</p>
+            <BrandCarousel></BrandCarousel>
         </div >
     );
 };
