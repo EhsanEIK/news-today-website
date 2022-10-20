@@ -1,12 +1,28 @@
 import React from 'react';
+import { Image } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import { FaEye, FaStar } from "react-icons/fa";
+import { FaEye, FaRegBookmark, FaShareAlt, FaStar } from "react-icons/fa";
 
 const NewsSummaryCard = ({ news }) => {
     console.log(news)
     const { _id, category_id, author, details, image_url, rating, title, total_view } = news
     return (
         <Card className='mb-3'>
+            <Card.Header as="h5" className="d-flex justify-content-between">
+                <div className='d-flex align-items-center'>
+                    <div>
+                        <Image src={author.img} alt="" roundedCircle style={{ height: '50px' }}></Image>
+                    </div>
+                    <div className='ms-2'>
+                        <h6 className='m-0'>{author.name}</h6>
+                        <small className='text-muted m-0'>{author.published_date}</small>
+                    </div>
+                </div>
+                <div className='d-flex align-items-center'>
+                    <FaRegBookmark />
+                    <FaShareAlt className='ms-2' />
+                </div>
+            </Card.Header>
             <Card.Img variant="top" src={image_url} />
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
