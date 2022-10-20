@@ -5,10 +5,9 @@ import { FaEye, FaRegBookmark, FaShareAlt, FaStar } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const NewsSummaryCard = ({ news }) => {
-    console.log(news)
     const { _id, author, details, image_url, rating, title, total_view } = news
     return (
-        <Card className='mb-3'>
+        <Card className='mb-4'>
             <Card.Header as="h5" className="d-flex justify-content-between">
                 <div className='d-flex align-items-center'>
                     <div>

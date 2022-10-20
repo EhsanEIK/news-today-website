@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import NewsSummaryCard from '../../News/NewsSummaryCard/NewsSummaryCard';
+import NewsSummaryCard from '../../Shared/NewsSummaryCard/NewsSummaryCard';
 
 const Home = () => {
     const allNews = useLoaderData();
