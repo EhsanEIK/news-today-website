@@ -9,7 +9,11 @@ import { FaUserAlt } from "react-icons/fa";
 import { Image } from 'react-bootstrap';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut().then(r => { }).catch(error => console.error(error));
+    }
 
     return (
         <Navbar bg="light" expand="lg" className='mb-3'>
@@ -27,7 +31,11 @@ const Header = () => {
                         <Nav.Link>{user?.email ? user.email : ''}</Nav.Link>
                         <Nav.Link eventKey={2} href="#memes">
                             {user?.photoURL
-                                ? <Image src={user.photoURL} roundedCircle style={{ height: '30px' }}></Image>
+                                ?
+                                <>
+                                    <button onClick={handleLogOut} className='me-3'>Log Out</button>
+                                    <Image src={user.photoURL} roundedCircle style={{ height: '30px' }}></Image>
+                                </>
                                 : <FaUserAlt />}
                         </Nav.Link>
                     </Nav>
