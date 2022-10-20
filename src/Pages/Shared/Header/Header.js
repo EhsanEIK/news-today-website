@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
+import { FaUserAlt } from "react-icons/fa";
+import { Image } from 'react-bootstrap';
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
+
     return (
         <Navbar bg="light" expand="lg" className='mb-3'>
             <Container>
@@ -17,6 +22,14 @@ const Header = () => {
                     <Nav className="me-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="#link">News</Nav.Link>
+                    </Nav>
+                    <Nav className='d-flex align-items-center'>
+                        <Nav.Link>{user?.email ? user.email : ''}</Nav.Link>
+                        <Nav.Link eventKey={2} href="#memes">
+                            {user?.photoURL
+                                ? <Image src={user.photoURL} roundedCircle style={{ height: '30px' }}></Image>
+                                : <FaUserAlt />}
+                        </Nav.Link>
                     </Nav>
                     <div className='d-lg-none'>
                         <LeftSideNav></LeftSideNav>
