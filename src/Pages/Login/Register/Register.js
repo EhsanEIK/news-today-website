@@ -3,9 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
-
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const [errorMsg, setErrorMsg] = useState('');
 
     const handleSubmitRegister = event => {
@@ -13,15 +12,22 @@ const Register = () => {
         setErrorMsg('');
 
         const form = event.target;
-        const name = form.name.value;
+        const name = form.userName.value;
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
 
         createUser(email, password)
             .then(result => {
+                updateProfile(name, photoURL);
                 form.reset();
             })
+            .catch(error => setErrorMsg(error.message));
+    }
+
+    const updateProfile = (name, photoURL) => {
+        updateUserProfile(name, photoURL)
+            .then(r => { })
             .catch(error => setErrorMsg(error.message));
     }
 
@@ -29,7 +35,7 @@ const Register = () => {
         <Form onSubmit={handleSubmitRegister}>
             <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Your Name</Form.Label>
-                <Form.Control name='name' type="text" placeholder="Enter Your Name" />
+                <Form.Control name='userName' type="text" placeholder="Enter Your Name" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="photoURL">
                 <Form.Label>Photo URL</Form.Label>

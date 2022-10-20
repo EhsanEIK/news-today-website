@@ -44,7 +44,7 @@ const Header = () => {
                         }
                     </Nav>
                     <Nav className='d-flex align-items-center'>
-                        <Nav.Link>{user?.email ? user.email : ''}</Nav.Link>
+                        <Nav.Link>{user?.displayName ? user.displayName : ''}</Nav.Link>
                         <Nav.Link eventKey={2} href="#memes">
                             {user?.photoURL
                                 ?
