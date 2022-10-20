@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 const News = () => {
     const news = useLoaderData();
     const { title, image_url, details, category_id } = news;
-    console.log(news)
+
     return (
         <div>
             <Card style={{ width: 'auto' }}>
