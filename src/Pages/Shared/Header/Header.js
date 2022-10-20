@@ -27,16 +27,28 @@ const Header = () => {
                         <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="#link">News</Nav.Link>
                     </Nav>
+                    <Nav>
+                        {
+                            user?.uid ?
+                                <button onClick={handleLogOut} className='me-3'>Log Out</button>
+                                : <>
+                                    <Nav.Link>
+                                        <Link to='/login'>Login</Link>
+                                    </Nav.Link>
+                                    <Nav.Link>
+                                        <Link to='/register'>Register</Link>
+                                    </Nav.Link>
+                                </>
+                        }
+                    </Nav>
                     <Nav className='d-flex align-items-center'>
                         <Nav.Link>{user?.email ? user.email : ''}</Nav.Link>
                         <Nav.Link eventKey={2} href="#memes">
                             {user?.photoURL
                                 ?
-                                <>
-                                    <button onClick={handleLogOut} className='me-3'>Log Out</button>
-                                    <Image src={user.photoURL} roundedCircle style={{ height: '30px' }}></Image>
-                                </>
-                                : <FaUserAlt />}
+                                <Image src={user.photoURL} roundedCircle style={{ height: '30px' }}></Image>
+                                :
+                                <FaUserAlt />}
                         </Nav.Link>
                     </Nav>
                     <div className='d-lg-none'>
@@ -44,7 +56,7 @@ const Header = () => {
                     </div>
                 </Navbar.Collapse>
             </Container>
-        </Navbar>
+        </Navbar >
     );
 };
 
