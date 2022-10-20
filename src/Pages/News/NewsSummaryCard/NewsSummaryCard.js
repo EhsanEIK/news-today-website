@@ -2,10 +2,11 @@ import React from 'react';
 import { Image } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { FaEye, FaRegBookmark, FaShareAlt, FaStar } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const NewsSummaryCard = ({ news }) => {
     console.log(news)
-    const { _id, category_id, author, details, image_url, rating, title, total_view } = news
+    const { _id, author, details, image_url, rating, title, total_view } = news
     return (
         <Card className='mb-3'>
             <Card.Header as="h5" className="d-flex justify-content-between">
@@ -27,7 +28,11 @@ const NewsSummaryCard = ({ news }) => {
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>
-                    {details.length > 200 ? details.slice(0, 200) : details}
+                    {
+                        details.length > 200 ?
+                            <p>{details.slice(0, 200) + '...'}<Link to={`/news/${_id}`}>Read More</Link></p>
+                            : <p>{details}</p>
+                    }
                 </Card.Text>
             </Card.Body>
             <Card.Footer className="d-flex justify-content-between text-muted">
