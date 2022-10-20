@@ -1,29 +1,55 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 
 const Register = () => {
+    const { createUser } = useContext(AuthContext);
+    const [errorMsg, setErrorMsg] = useState('');
+
+    const handleSubmitRegister = event => {
+        event.preventDefault();
+        setErrorMsg('');
+
+        const form = event.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        createUser(email, password)
+            .then(result => {
+                form.reset();
+            })
+            .catch(error => setErrorMsg(error.message));
+    }
+
     return (
-        <Form>
+        <Form onSubmit={handleSubmitRegister}>
+            <Form.Group className="mb-3" controlId="name">
+                <Form.Label>Your Name</Form.Label>
+                <Form.Control name='name' type="text" placeholder="Enter Your Name" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="photoURL">
+                <Form.Label>Photo URL</Form.Label>
+                <Form.Control name='photoURL' type="text" placeholder="Enter Your Photo URL" />
+            </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                </Form.Text>
+                <Form.Control name='email' type="email" placeholder="Enter email" required />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
+                <Form.Control name='password' type="password" placeholder="Password" required />
             </Form.Group>
             <Button variant="primary" type="submit">
-                Submit
+                Register
             </Button>
+            <Form.Text className="text-danger d-block">
+                {errorMsg}
+            </Form.Text>
         </Form>
     );
 };
