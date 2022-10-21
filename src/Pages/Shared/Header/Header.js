@@ -39,13 +39,13 @@ const Header = () => {
                     </Nav>
                     <Nav className='d-flex align-items-center'>
                         <Nav.Link>{user?.displayName ? user.displayName : ''}</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
+                        <Link to='/profile'>
                             {user?.photoURL
                                 ?
                                 <Image src={user.photoURL} roundedCircle style={{ height: '30px' }}></Image>
                                 :
                                 <FaUserAlt />}
-                        </Nav.Link>
+                        </Link>
                     </Nav>
                     <div className='d-lg-none'>
                         <LeftSideNav></LeftSideNav>
