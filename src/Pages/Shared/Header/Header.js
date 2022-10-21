@@ -24,9 +24,7 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-
-                        <Nav.Link><Link to='/' className='text-decoration-none text-dark'>Home</Link></Nav.Link>
-
+                        <Link to='/' className='text-decoration-none text-dark'>Home</Link>
                         <Nav.Link href="#link">News</Nav.Link>
                     </Nav>
                     <Nav>
@@ -34,12 +32,8 @@ const Header = () => {
                             user?.uid ?
                                 <button onClick={handleLogOut} className='me-3'>Log Out</button>
                                 : <>
-                                    <Nav.Link>
-                                        <Link to='/login'>Login</Link>
-                                    </Nav.Link>
-                                    <Nav.Link>
-                                        <Link to='/register'>Register</Link>
-                                    </Nav.Link>
+                                    <Link to='/login'>Login</Link>
+                                    <Link to='/register'>Register</Link>
                                 </>
                         }
                     </Nav>
