@@ -2,11 +2,14 @@ import React, { useContext, useRef, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
     const [userName, setUserName] = useState(user.displayName);
     const photoURLRef = useRef(user.photoURL);
+
+    useTitle('Profile');
 
     const handleSubmit = event => {
         event.preventDefault();
